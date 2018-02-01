@@ -14,12 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.xavier.clinica.exception.EmailUsuarioJaCadastradoException;
-import com.xavier.clinica.exception.SenhaObrigatoriaUsuarioException;
 import com.xavier.clinica.model.Usuario;
 import com.xavier.clinica.repository.Grupos;
 import com.xavier.clinica.repository.Usuarios;
 import com.xavier.clinica.service.CadastroUsuarioService;
+import com.xavier.clinica.service.exception.EmailUsuarioJaCadastradoException;
+import com.xavier.clinica.service.exception.SenhaObrigatoriaUsuarioException;
 
 
 

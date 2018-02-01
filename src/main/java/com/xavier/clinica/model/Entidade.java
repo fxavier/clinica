@@ -6,14 +6,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "clinica")
-public class Clinica implements Serializable {
-
+@Table(name = "entidade")
+public class Entidade implements Serializable {
+	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -28,10 +26,8 @@ public class Clinica implements Serializable {
 	
 	private String celular;
 	
-	@ManyToOne
-	@JoinColumn(name = "codigo_banco")
-	private Banco banco;
-		
+	private String fax;
+	
 	private String endereco;
 
 	public Long getCodigo() {
@@ -57,8 +53,6 @@ public class Clinica implements Serializable {
 	public void setNuit(String nuit) {
 		this.nuit = nuit;
 	}
-	
-	
 
 	public String getTelefone() {
 		return telefone;
@@ -76,19 +70,17 @@ public class Clinica implements Serializable {
 		this.celular = celular;
 	}
 
-	public Banco getBanco() {
-		return banco;
+	public String getFax() {
+		return fax;
 	}
 
-	public void setBanco(Banco banco) {
-		this.banco = banco;
+	public void setFax(String fax) {
+		this.fax = fax;
 	}
 
 	public String getEndereco() {
 		return endereco;
 	}
-	
-	
 
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
@@ -110,7 +102,7 @@ public class Clinica implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Clinica other = (Clinica) obj;
+		Entidade other = (Entidade) obj;
 		if (codigo == null) {
 			if (other.codigo != null)
 				return false;

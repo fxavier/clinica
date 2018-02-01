@@ -1,0 +1,21 @@
+CREATE TABLE entidade(
+ codigo BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
+ nome VARCHAR(100) NOT NULL,
+ nuit VARCHAR(100) NOT NULL,
+ telefone VARCHAR(100) NOT NULL,
+ celular VARCHAR(100),
+ fax VARCHAR(100),
+ endereco VARCHAR(200) NOT NULL
+ )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+ 
+ CREATE TABLE comparticipacao(
+  codigo BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
+  codigo_entidade BIGINT(20) NOT NULL,
+  artigo VARCHAR(100) NOT NULL,
+  percentagem DECIMAL(10, 2) NOT NULL,
+  valor_maximo DECIMAL(10, 2) NOT NULL,
+  valor_fixo DECIMAL(10, 2) NOT NULL,
+  observacao TEXT,
+  activo BOOLEAN DEFAULT TRUE,
+  FOREIGN KEY(codigo_entidade) REFERENCES entidade(codigo)
+ )ENGINE=InnoDB DEFAULT CHARSET=utf8;

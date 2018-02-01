@@ -6,33 +6,27 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "clinica")
-public class Clinica implements Serializable {
+@Table(name = "banco")
+public class Banco implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY )
 	private Long codigo;
 	
+    @NotBlank(message = "O Nome e obrigatorio")
 	private String nome;
 	
-	private String nuit;
+    @NotBlank(message = "O numero da conta e obrigatorio")
+	private String conta;
 	
-	private String telefone;
-	
-	private String celular;
-	
-	@ManyToOne
-	@JoinColumn(name = "codigo_banco")
-	private Banco banco;
-		
-	private String endereco;
+    @NotBlank(message = "O NIB e obrigatorio")
+	private String nib;
 
 	public Long getCodigo() {
 		return codigo;
@@ -50,50 +44,26 @@ public class Clinica implements Serializable {
 		this.nome = nome;
 	}
 
-	public String getNuit() {
-		return nuit;
+	public String getConta() {
+		return conta;
 	}
 
-	public void setNuit(String nuit) {
-		this.nuit = nuit;
-	}
-	
-	
-
-	public String getTelefone() {
-		return telefone;
+	public void setConta(String conta) {
+		this.conta = conta;
 	}
 
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
+	public String getNib() {
+		return nib;
 	}
 
-	public String getCelular() {
-		return celular;
-	}
-
-	public void setCelular(String celular) {
-		this.celular = celular;
-	}
-
-	public Banco getBanco() {
-		return banco;
-	}
-
-	public void setBanco(Banco banco) {
-		this.banco = banco;
-	}
-
-	public String getEndereco() {
-		return endereco;
+	public void setNib(String nib) {
+		this.nib = nib;
 	}
 	
-	
-
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
+	public boolean isNovo() {
+		return this.codigo == null;
 	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -101,7 +71,7 @@ public class Clinica implements Serializable {
 		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
 		return result;
 	}
-
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -110,7 +80,7 @@ public class Clinica implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Clinica other = (Clinica) obj;
+		Banco other = (Banco) obj;
 		if (codigo == null) {
 			if (other.codigo != null)
 				return false;
@@ -118,7 +88,6 @@ public class Clinica implements Serializable {
 			return false;
 		return true;
 	}
-	
 	
 
 }

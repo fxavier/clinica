@@ -1,4 +1,4 @@
-package com.xavier.clinica.exception;
+package com.xavier.clinica.service.exception;
 
 public class SenhaObrigatoriaUsuarioException extends RuntimeException {
 

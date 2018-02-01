@@ -11,10 +11,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
-import com.xavier.clinica.exception.EmailUsuarioJaCadastradoException;
-import com.xavier.clinica.exception.SenhaObrigatoriaUsuarioException;
 import com.xavier.clinica.model.Usuario;
 import com.xavier.clinica.repository.Usuarios;
+import com.xavier.clinica.service.exception.EmailUsuarioJaCadastradoException;
+import com.xavier.clinica.service.exception.SenhaObrigatoriaUsuarioException;
 
 
 

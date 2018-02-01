@@ -1,6 +1,7 @@
 package com.xavier.clinica.model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,28 +12,29 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "clinica")
-public class Clinica implements Serializable {
+@Table(name = "actos_medicos")
+public class ActosMedicos implements Serializable{
 
+	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 	
-	private String nome;
-	
-	private String nuit;
-	
-	private String telefone;
-	
-	private String celular;
+	private LocalDate data;
 	
 	@ManyToOne
-	@JoinColumn(name = "codigo_banco")
-	private Banco banco;
-		
-	private String endereco;
+	@JoinColumn(name = "codigo_paciente")
+	private Paciente paciente;
+	
+	@ManyToOne
+	@JoinColumn(name = "codigo_medico")
+	private Medico medico;
+	
+	@ManyToOne
+	@JoinColumn(name = "codigo_servico")
+	private Servicos servicos;
 
 	public Long getCodigo() {
 		return codigo;
@@ -42,56 +44,36 @@ public class Clinica implements Serializable {
 		this.codigo = codigo;
 	}
 
-	public String getNome() {
-		return nome;
+	public LocalDate getData() {
+		return data;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setData(LocalDate data) {
+		this.data = data;
 	}
 
-	public String getNuit() {
-		return nuit;
+	public Paciente getPaciente() {
+		return paciente;
 	}
 
-	public void setNuit(String nuit) {
-		this.nuit = nuit;
-	}
-	
-	
-
-	public String getTelefone() {
-		return telefone;
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
 	}
 
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
+	public Medico getMedico() {
+		return medico;
 	}
 
-	public String getCelular() {
-		return celular;
+	public void setMedico(Medico medico) {
+		this.medico = medico;
 	}
 
-	public void setCelular(String celular) {
-		this.celular = celular;
+	public Servicos getServicos() {
+		return servicos;
 	}
 
-	public Banco getBanco() {
-		return banco;
-	}
-
-	public void setBanco(Banco banco) {
-		this.banco = banco;
-	}
-
-	public String getEndereco() {
-		return endereco;
-	}
-	
-	
-
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
+	public void setServicos(Servicos servicos) {
+		this.servicos = servicos;
 	}
 
 	@Override
@@ -110,7 +92,7 @@ public class Clinica implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Clinica other = (Clinica) obj;
+		ActosMedicos other = (ActosMedicos) obj;
 		if (codigo == null) {
 			if (other.codigo != null)
 				return false;
@@ -118,6 +100,10 @@ public class Clinica implements Serializable {
 			return false;
 		return true;
 	}
+	
+	
+	
+	
 	
 	
 

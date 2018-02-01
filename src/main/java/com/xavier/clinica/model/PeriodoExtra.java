@@ -11,28 +11,25 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "clinica")
-public class Clinica implements Serializable {
+@Table(name = "periodo_extra")
+public class PeriodoExtra implements Serializable {
 
+	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 	
-	private String nome;
-	
-	private String nuit;
-	
-	private String telefone;
-	
-	private String celular;
+	@ManyToOne
+	@JoinColumn(name = "codigo_medico")
+	private Medico medico;
 	
 	@ManyToOne
-	@JoinColumn(name = "codigo_banco")
-	private Banco banco;
-		
-	private String endereco;
+	@JoinColumn(name = "codigo_especialidade")
+	private Especialidade especialidade;
+	
+	private String observacao;
 
 	public Long getCodigo() {
 		return codigo;
@@ -42,56 +39,28 @@ public class Clinica implements Serializable {
 		this.codigo = codigo;
 	}
 
-	public String getNome() {
-		return nome;
+	public Medico getMedico() {
+		return medico;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setMedico(Medico medico) {
+		this.medico = medico;
 	}
 
-	public String getNuit() {
-		return nuit;
+	public Especialidade getEspecialidade() {
+		return especialidade;
 	}
 
-	public void setNuit(String nuit) {
-		this.nuit = nuit;
-	}
-	
-	
-
-	public String getTelefone() {
-		return telefone;
+	public void setEspecialidade(Especialidade especialidade) {
+		this.especialidade = especialidade;
 	}
 
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
+	public String getObservacao() {
+		return observacao;
 	}
 
-	public String getCelular() {
-		return celular;
-	}
-
-	public void setCelular(String celular) {
-		this.celular = celular;
-	}
-
-	public Banco getBanco() {
-		return banco;
-	}
-
-	public void setBanco(Banco banco) {
-		this.banco = banco;
-	}
-
-	public String getEndereco() {
-		return endereco;
-	}
-	
-	
-
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
+	public void setObservacao(String observacao) {
+		this.observacao = observacao;
 	}
 
 	@Override
@@ -110,7 +79,7 @@ public class Clinica implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Clinica other = (Clinica) obj;
+		PeriodoExtra other = (PeriodoExtra) obj;
 		if (codigo == null) {
 			if (other.codigo != null)
 				return false;
@@ -118,6 +87,8 @@ public class Clinica implements Serializable {
 			return false;
 		return true;
 	}
+	
+	
 	
 	
 
