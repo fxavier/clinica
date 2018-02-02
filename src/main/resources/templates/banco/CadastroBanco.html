@@ -15,13 +15,14 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-xs-10">
-					<h1>Cadastro de bancos</h1>
+					<h1 th:if="${banco.novo}">Cadastro de bancos</h1>
+					<h1 th:unless="${banco.novo}" th:text="|Edição do banco ${banco.nome}"></h1>
 				</div>
 				
 				<div class="col-xs-2">
 					<div class="aw-page-header-controls">
-						<a class="btn  btn-default" th:href="@{/cidades}">
-							<i class="glyphicon  glyphicon-plus-sign"></i> <span class="hidden-xs  hidden-sm">Pesquisa</span>
+						<a class="btn  btn-success" th:href="@{/bancos}">
+							<i class="glyphicon  glyphicon-search"></i> <span class="hidden-xs  hidden-sm">Pesquisa</span>
 						</a>
 					</div>
 				</div>
@@ -30,11 +31,11 @@
 	</div>
 	
 	<div class="container-fluid">
-		<form method="POST" th:object="${banco}" th:action="@{/bancos/novo}">
+		<form method="POST" th:object="${banco}" 
+		 th:action="@{banco.novo} ? @{/bancos/novo} : @{/bancos/{codigo}(codigo=${banco.codigo})}">
 			<clinica:message/>
-			
-			<div class="row">
-								
+			<input type="hidden" th:field="*{codigo}" />
+			<div class="row">								
 				<div class="form-group  col-sm-8  bw-required" clinica:classforerror="nome">
 					<label for="nome" class="control-label">Nome</label>
 					<input type="text" class="form-control" id="nome" th:field="*{nome}"/>
