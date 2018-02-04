@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "entidade")
@@ -18,16 +19,21 @@ public class Entidade implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 	
+	@NotBlank(message = "O nome é obrigatório")
 	private String nome;
 	
+	@NotBlank(message = "O Nuit é obrigatório")
 	private String nuit;
 	
+	@NotBlank(message = "O telefone é obrigatório")
 	private String telefone;
 	
+	@NotBlank(message = "O celular é obrigatório")
 	private String celular;
 	
 	private String fax;
 	
+	@NotBlank(message = "O endereco é obrigatório")
 	private String endereco;
 
 	public Long getCodigo() {
@@ -85,6 +91,9 @@ public class Entidade implements Serializable {
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
+	public boolean isNova() {
+		return this.codigo == null;
+	}
 
 	@Override
 	public int hashCode() {
@@ -110,6 +119,7 @@ public class Entidade implements Serializable {
 			return false;
 		return true;
 	}
+
 	
 	
 
