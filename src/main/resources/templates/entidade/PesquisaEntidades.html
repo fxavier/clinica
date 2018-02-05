@@ -4,10 +4,10 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="'layout/LayoutPadrao'"
 	xmlns:data="http://www.thymeleaf.org/extras/data"
-	xmlns:brewer="http://brewer.algaworks.com">
+	xmlns:clinica="http://brewer.algaworks.com">
 	
 <head>
-	<title>Pesquisa de bancos</title>
+	<title>Pesquisa de entidades</title>
 </head>
 
 <body>
@@ -16,13 +16,13 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-sm-10">
-					<h1>Pesquisa de bancos</h1>
+					<h1>Pesquisa de entidades</h1>
 				</div>
 				
 				<div class="col-sm-2">
 					<div class="aw-page-header-controls">
-						<a class="btn  btn-success" th:href="@{/bancos/novo}">
-							<i class="glyphicon  glyphicon-plus-sign"></i> <span class="hidden-xs  hidden-sm">Novo banco</span>
+						<a class="btn  btn-success" th:href="@{/entidades/nova}">
+							<i class="glyphicon  glyphicon-plus-sign"></i> <span class="hidden-xs  hidden-sm">Nova entidade</span>
 						</a>
 					</div>
 				</div>
@@ -31,7 +31,7 @@
 	</div>
 	
 	<div class="container-fluid">
-		<form method="GET" th:object="${bancoFilter}" th:action="@{/bancos}">
+		<form method="GET" th:object="${entidadeFilter}" th:action="@{/entidades}">
 			<div class="row">
 				<div class="form-group  col-sm-12">
 					<label class="control-label" for="nome">Nome</label>
@@ -50,32 +50,38 @@
 						<th>
 							<th:block th:replace="fragments/Ordenacao :: order (${pagina}, 'nome', 'Nome')"></th:block>
 						</th>
-						<th>Conta</th>
-						<th>NIB</th>
+						<th>Nuit</th>
+						<th>Telefone</th>
+						<th>Celular</th>
+						<th>Fax</th>
+						<th>Endereco</th>
 						<th class="table-col-acoes">Acções</th>
 					</tr>
 				</thead>
 				
 				<tbody>
-					<tr th:each="banco : ${pagina.conteudo}">
-						<td th:text="${banco.codigo}">1</td>
-						<td th:text="${banco.nome}"></td>
-						<td th:text="${banco.conta}"></td>
-						<td th:text="${banco.nib}"></td>
+					<tr th:each="entidade : ${pagina.conteudo}">
+						<td th:text="${entidade.codigo}">1</td>
+						<td th:text="${entidade.nome}"></td>
+						<td th:text="${entidade.nuit}"></td>
+						<td th:text="${entidade.telefone}"></td>
+						<td th:text="${entidade.celular}"></td>
+						<td th:text="${entidade.fax}"></td>
+						<td th:text="${entidade.endereco}"></td>
 						<td>
 							<a class="btn  btn-link  btn-xs js-tooltip" title="Editar"
-							    th:href="@{/bancos/{codigo}(codigo=${banco.codigo})}" > 
+							    th:href="@{/entidades/{codigo}(codigo=${entidade.codigo})}" > 
 								<i class="glyphicon glyphicon-pencil"></i>
 							</a>
 							<a class="btn  btn-link  btn-xs js-tooltip js-exclusao-btn" title="Excluir" href="#"
-							  data:url="@{/bancos/{codigo}(codigo=${banco.codigo})}"
-							  data:objeto="${banco.nome}">
+							  data:url="@{/entidades/{codigo}(codigo=${entidade.codigo})}"
+							  data:objeto="${entidade.nome}">
 							    <i class="glyphicon glyphicon-remove"></i>
 							</a>
 						</td>
 					</tr>
 					<tr th:if="${pagina.vazia}">
-						<td colspan="3">Nenhum banco encontrado</td>
+						<td colspan="3">Nenhuma entidade encontrada</td>
 					</tr>
 				</tbody>
 			</table>

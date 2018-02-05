@@ -1,6 +1,5 @@
 package com.xavier.clinica.repository.helper.entidade;
 
-import java.util.Optional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -29,12 +28,7 @@ public class EntidadesImpl implements EntidadesQueries {
 	@Autowired
 	private PaginacaoUtil paginacaoUtil;
 
-	@Override
-	public Optional<Entidade> findByNomeIgnoreCase(String nome) {
-		
-		return null;
-	}
-
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional(readOnly = true)
